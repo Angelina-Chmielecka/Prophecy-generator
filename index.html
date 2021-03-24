@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="pl-PL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Poznaj swoją przyszość</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="bg">
+      <img src="star.png" alt="star" class="bg__img bg__img--smallStar" />
+      <img
+        src="pointed-star.png"
+        alt="bigStar"
+        class="bg__img bg__img--bigStar"
+      />
+      <img
+        src="maleficent.png"
+        alt="maleficent"
+        class="bg__img bg__img--logo"
+      />
+    </div>
+    <div class="container">
+      <h1>Wróżba z okruchów spod klawiatury</h1>
+      <button onclick="getAndPrintInsult()">przepowiednia</button>
+      <div id="insult">&nbsp;</div>
+    </div>
+
+    <script>
+      const randomDays = [
+        "Dzisiaj",
+        "Jutro",
+        "Wkrótce",
+        "Niedługo",
+        "Za jakiś czas",
+        "W tym tygodniu",
+        "W tym miesiącu",
+      ];
+
+      const randomOmens = [
+        "okradną Cię z",
+        "spotkasz",
+        "będziesz",
+        "kolega",
+        "koleżanka",
+        "Twój ukryty wróg",
+      ];
+      const randomOmenStealing = [
+        "pieniedzy.",
+        "biżuterii.",
+        "godnosci.",
+        "oszczędności życia.",
+      ];
+
+      const randomOmenMeetigs = [
+        "dawną przyjaciółkę.",
+        "osobę, która się w Tobie podkochiwała.",
+        "sławną piosenkarkę.",
+        "znienawidzonego znajmego ze szkoły.",
+        "znanego polityka.",
+      ];
+
+      const randomToBe = [
+        "chory.",
+        "bardzo chory.",
+        "bardzo szczęśliwy.",
+        "bardzo smutny.",
+        "opłakiwał śmierć bliskiej osoby.",
+        "cieszył się z nowej znajomośći.",
+        "miał okazję odnowić starą znajomość.",
+        "miał ciągle szczęście.",
+        "miał niesamowitego pecha.",
+        "kłócił się ze wszystkimi.",
+        "szukał zagubionej rzeczy.",
+      ];
+
+      const randomPerson = [
+        "zdradzi Twoj sekret.",
+        "odkryje Twoj sekret.",
+        "zniknie z Twojego życia.",
+        "pojawi się w najmniej oczekiwanym momencie.",
+        "zgubi coś ważnego.",
+        "sprawi, że bedziesz zazdrosny.",
+        "powie Ci nieoczekiwany komplement.",
+      ];
+
+      function getRandomElement(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      function getInsult() {
+        var day = getRandomElement(randomDays);
+        var omen = getRandomElement(randomOmens);
+
+        if (omen == randomOmens[0]) {
+          var item = getRandomElement(randomOmenStealing);
+          return `${day} ${omen} ${item}`;
+        }
+
+        if (omen == randomOmens[1]) {
+          var item = getRandomElement(randomOmenMeetigs);
+          return `${day} ${omen} ${item}`;
+        }
+
+        if (omen == randomOmens[2]) {
+          var item = getRandomElement(randomToBe);
+          return `${day} ${omen} ${item}`;
+        }
+
+        if (
+          omen == randomOmens[3] ||
+          omen == randomOmens[4] ||
+          omen == randomOmens[5]
+        ) {
+          var item = getRandomElement(randomPerson);
+          return `${day} ${omen} ${item}`;
+        }
+      }
+
+      function getAndPrintInsult() {
+        var insult = getInsult();
+        var element = (document.getElementById("insult").innerHTML = insult);
+      }
+    </script>
+  </body>
+</html>
